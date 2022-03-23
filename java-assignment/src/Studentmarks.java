@@ -3,7 +3,7 @@ import org.w3c.dom.ranges.RangeException;
 public class Studentmarks {
 	private String name;
 	private double[] marks = new double[6];
-	private static String[] Subs = new String[] {"Maths","Physics","Chemistry","Hindi","English","German"};
+	private static String[] Subs = new String[] {"Maths","Physics","Chemistry","Hindi","English","Telugu"};
 	
 	Studentmarks(String name){
 		this.name = name;
