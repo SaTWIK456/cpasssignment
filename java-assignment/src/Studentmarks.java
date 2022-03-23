@@ -1,49 +1,34 @@
-import java.util.Scanner;
+import org.w3c.dom.ranges.RangeException;
+
 public class Studentmarks {
-public static void main(String[] args) {
- Scanner in=new Scanner(System.in);
- System.out.println("enter your name:");
- String name=in.next();
- System.out.println("enter marks of Telugu :");
- int Tel=in.nextInt();
- if(Tel>50)
- {
- System.out.println("Marsk should not be more than 50");
- } 
- System.out.println("enter marks of Hindi: ");
- int Hin=in.nextInt();
- if(Hin>50)
- {
- System.out.println("Marks should not be more than 50");
- }
- System.out.println("enter marks of English :");
- int Eng=in.nextInt();
- if(Eng>50)
- {
- System.out.println("Marks should not be more than 50");
- }
- 
- System.out.println("enter marks of Maths:");
- int Mat=in.nextInt();
- if(Mat>50)
- {
- System.out.println("Marks should not be more than 50");
- }
- System.out.println("enter marks of Science :");
- int Sc=in.nextInt();
- if(Sc>50)
- {
- System.out.println("Marks should not be more than 50");
- }
- System.out.println("enter marks of Social:");
- int Soc=in.nextInt();
- if(Soc>500)
- {
- System.out.println("Marks should not be more than 50");
- }
- int tot=Tel+Eng+Hin+Mat+Sc+Soc;
- System.out.println("total:"+tot+" ");
- float percentage=tot*100/600;
- System.out.println("percentage:"+percentage+" ");
-}
+	private String name;
+	private double[] marks = new double[6];
+	private static String[] Subs = new String[] {"Maths","Physics","Chemistry","Hindi","English","German"};
+	
+	Studentmarks(String name){
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setMarks(double[] givenMarks) throws RangeException{
+		for(int i=0;i<6;i++) {
+			if(givenMarks[i]>=0 && givenMarks[i]<=50) {
+				this.marks[i] = givenMarks[i];
+			}
+			else {
+				throw new RangeException((short)0, "The marks are "+Studentmarks.Subs[i]+" out of range");
+			}
+		}
+	}
+	
+	public void getInfo() {
+		System.out.println("Name : "+this.getName());
+		for(int i=0;i<6;i++) {
+			System.out.println(Studentmarks.Subs[i]+" : "+this.marks[i]);
+		}
+	}
+	
 }
